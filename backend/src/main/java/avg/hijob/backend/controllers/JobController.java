@@ -12,6 +12,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.repository.query.Param;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -48,6 +49,11 @@ public class JobController {
         return ResponseHandler.responseBuilder("Complete", HttpStatus.OK, jobService.getAllJobsWithQuery(size, page,q, salary, yearExp));
     }
 
+    @GetMapping("/all")
+    public ResponseEntity<Object> getAllJobs(@RequestParam(value = "levelId",required = false) Long levelId ,
+                                             @RequestParam(value = "skillId",required = false) Long skillId){
+        return ResponseHandler.responseBuilder("Complete",HttpStatus.OK,jobService.getListJobs(skillId,levelId));
+    }
 
 
 
