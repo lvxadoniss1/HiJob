@@ -34,4 +34,6 @@ public interface JobService {
                                  String contractType,
                                    Optional<Integer> pageNo,
                                    Optional<Integer> pageSize);
+
+    public List<ResponseJob> getListJobs(Long skillId, Long levelId);
 }

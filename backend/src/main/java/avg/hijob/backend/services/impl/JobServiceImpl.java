@@ -14,6 +14,7 @@ import avg.hijob.backend.requests.RequestJob;
 import avg.hijob.backend.responses.ResponseJob;
 import avg.hijob.backend.services.JobService;
 import lombok.RequiredArgsConstructor;
+import org.apache.coyote.Response;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -284,6 +285,9 @@ public class JobServiceImpl implements JobService {
         return new PageImpl<>(jobList, PageRequest.of(pageNo.orElse(0), pageSize.orElse(10)), jobList.size());
     }
 
+    public List<ResponseJob> getListJobs(Long skillId, Long levelId){
+        return jobRepository.getFilterJobs(skillId,levelId);
+    }
 
 
 }
