@@ -65,6 +65,7 @@ const CreateJobType = loadable(() => import("./admin/pages/JobType/components/Fo
 const RolesAdmin = loadable(() => import("./admin/pages/Role"));
 //Recruitment
 const RecruitmentAdmin = loadable(() => import("./admin/pages/Recruitment"));
+const JobsList = loadable(() => import("./pages/JobList/index.jsx"));
 
 function App() {
     useEffect(() => {
@@ -112,6 +113,14 @@ function App() {
                         element={
                             <Suspense fallback={<CircularProgress />}>
                                 <JobDetail title="Việc Làm Đang Xem" />
+                            </Suspense>
+                        }
+                    />
+                    <Route
+                        path="/danh-sach-viec-lam"
+                        element={
+                            <Suspense fallback={<CircularProgress />}>
+                                <JobsList title="Danh sách việc làm" />
                             </Suspense>
                         }
                     />
