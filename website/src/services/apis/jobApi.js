@@ -1,6 +1,15 @@
 import axiosClient from "./axiosClient";
 
 const jobApi = {
+    getFilterJob(params) {
+        const { skillId, levelId } = params;
+        return axiosClient.get('/jobs/all', {
+            params: {
+                skillId,
+                levelId
+            }
+        });
+    },
     getAllJobs(params) {
         const url = `/jobs`;
         return axiosClient.get(url, { params });
